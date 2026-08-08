@@ -1,0 +1,4 @@
+require('dotenv').config();
+const path=require('path');const express=require('express');const cors=require('cors');
+const authRoutes=require('./routes/auth');const kycRoutes=require('./routes/kyc');const contentRoutes=require('./routes/content');
+const app=express();const PORT=process.env.PORT||4000;app.use(cors());app.use(express.json());app.use(express.static(path.join(__dirname,'..','public')));app.use('/uploads',express.static(path.join(__dirname,'uploads')));app.use('/api/auth',authRoutes);app.use('/api/kyc',kycRoutes);app.use('/api/content',contentRoutes);app.use((err,req,res,next)=>{if(err&&err.message)return res.status(400).json({error:err.message});next(err)});app.listen(PORT,()=>{console.log(`\nTrue Republic India server running at http://localhost:${PORT}\n`);if(!process.env.SMS_PROVIDER)console.log('Running with no SMS_PROVIDER set — OTPs will print here in the console (dev mode).')});

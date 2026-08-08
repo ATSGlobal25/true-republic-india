@@ -2,21 +2,20 @@
 
 An e-news platform by the people, for the people.
 
-## Project
+## Included
+- Node.js/Express API
+- Mobile OTP authentication
+- KYC submission and manual admin review
+- Member article/image/video publishing
+- Public news feed
 
-This repository contains the True Republic India web application, including the public news interface, member registration/KYC flow, content publishing APIs, and admin KYC review interface.
-
-## Run locally
-
+## Run
 ```bash
 npm install
 npm start
 ```
 
-The server serves the `public` directory and exposes the API routes under `/api`.
+Copy `.env.example` to `.env` and set production secrets before deployment.
 
-## Configuration
-
-Copy `.env.example` to `.env` and configure the required values before running the production application.
-
-> Never commit real secrets, OTP credentials, JWT secrets, database credentials, or production environment files.
+## Security
+Never commit `.env`, production credentials, KYC documents, or uploaded user media.
